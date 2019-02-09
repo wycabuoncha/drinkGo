@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using drinkGo.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using drinkGo.Models;
 
@@ -10,9 +11,20 @@ namespace drinkGo.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IDrinkRepository _iDrinkRepository;
+        private readonly ICategoryRepository _iCategoryRepository;
+
+        public HomeController(IDrinkRepository iDrinkRepository, ICategoryRepository iCategoryRepository)
+        {
+            _iDrinkRepository = iDrinkRepository;
+            _iCategoryRepository = iCategoryRepository;
+        }
+
+
         public IActionResult Index()
         {
-            return View();
+            var drinks = _iDrinkRepository.Drinks;
+            return View(drinks);
         }
 
         public IActionResult About()

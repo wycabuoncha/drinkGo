@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using drinkGo.Data.Mock;
+using drinkGo.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -33,6 +35,8 @@ namespace drinkGo
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddTransient<IDrinkRepository, MockDrinksRepository>();
+            services.AddTransient<ICategoryRepository, MockCategory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
