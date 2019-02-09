@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace drinkGo.Models
 {
-    [Table("drinkGO_Category")]
+    [Table("Category")]
     public class Category
     {
         public int CategoryId { get; set; }
